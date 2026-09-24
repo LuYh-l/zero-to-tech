@@ -20,9 +20,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_methods=["GET", "POST"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=["*"],
     allow_credentials=True,          # ← 新增：允许跨源请求带上 cookie
+    allow_headers=["*"],
 )
 
 def get_session_id(request: Request, response: Response) -> str:
